@@ -1,0 +1,11 @@
+.left-sidebar {
+    width: 200px;
+    display: block;
+    border-right: 1px solid rgb(114, 119, 141);
+    height: 100vh;
+    color: white;
+}
+
+.left-navbar {
+    display: grid;
+}

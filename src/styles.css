@@ -4,6 +4,11 @@ html {
     background: #161e27;
 }
 
+a {
+    color: white;
+    text-decoration: none;
+}
+
 body {
     margin: 0;
 }

@@ -1,11 +1,19 @@
-.main-container {
-    width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    color: white;
-}
-
 body {
     margin: 0;
     background: #161e27;
+}
+
+.content-wrapper {
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+}
+
+.main-container {
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    text-align: center;
 }
