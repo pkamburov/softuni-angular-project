@@ -2,4 +2,10 @@
     width: 1200px;
     margin-left: auto;
     margin-right: auto;
+    color: white;
+}
+
+body {
+    margin: 0;
+    background: #161e27;
 }
