@@ -9,8 +9,42 @@ a {
     text-decoration: none;
 }
 
+html,
+body {
+    height: 100%;
+}
+
 body {
     margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mdc-button {
+    justify-content: left !important;
+    color: white !important;
+    font-weight: 400 !important;
+    font-size: 22px !important;
+}
+
+.mdc-button:hover {
+    background-color: #1e2936 !important;
+}
+
+.mat-mdc-tab-label-container {
+    border-bottom: 1px solid rgb(114, 119, 141) !important;
+}
+
+.mat-mdc-tab-label-container {
+    position: sticky !important;
+    color: white !important;
+    width: 799px;
+    z-index: 5 !important;
+    background: #161e27;
+    border-left: 1px solid rgb(114, 119, 141);
+    border-right: 1px solid rgb(114, 119, 141);
+}
+
+.mat-mdc-tab .mdc-tab__text-label {
+    color: white !important;
+    font-size: 18px;
+}

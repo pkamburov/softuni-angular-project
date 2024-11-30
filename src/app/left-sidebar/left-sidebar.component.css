@@ -2,10 +2,52 @@
     width: 200px;
     display: block;
     border-right: 1px solid rgb(114, 119, 141);
-    height: 100vh;
+    height: 100%;
     color: white;
+    margin: 0;
+    position: fixed;
 }
 
 .left-navbar {
     display: grid;
+    gap: 8px;
+    
+}
+
+.left-navbar a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 12px;
+    border-radius: 8px;
+    gap: 8px;
+    outline-offset: -1px;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.17, 0.73, 0.14, 1);
+    transition-duration: 100ms;
+}
+
+.avatar {
+    width: 30%;
+    width: 56px;
+    height: 56px;
+    color: white;
+}
+
+.mat-icon {
+    font-size: 22px !important;
+}
+
+.mdc-button {
+    min-width: 200px !important;
+}
+
+.mat-mdc-button>.mat-icon {
+    font-size: 1.525rem;
+    height: 1.525rem;
+    width: 1.525rem;
+}
+
+.guest {
+    margin-top: 60px;
 }

@@ -12,8 +12,8 @@ body {
 
 .main-container {
     width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
     color: white;
     text-align: center;
+    margin-left: 200px;
 }

@@ -1,0 +1,9 @@
+main {
+    height: 100vh;
+    color: white;
+}
+
+mat-tab-group {
+    position: sticky !important;
+    top: 0;
+}
