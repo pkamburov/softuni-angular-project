@@ -38,3 +38,20 @@
 .userEmail {
     color: gray;
 }
+
+.mat-mdc-button-ripple {
+    height: 26px !important;
+}
+
+.mat-mdc-fab {
+    height: 26px !important;
+    background-color: transparent;
+    color: white;
+    gap: 6px;
+    box-shadow: none;
+}
+
+.mat-mdc-fab:hover {
+    box-shadow: none;
+    background-color: rgb(30, 41, 54);
+}

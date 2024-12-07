@@ -21,7 +21,17 @@
     </div>
     <div class="post-footer">
       <div>Comments</div>
-      <div>Likes</div>
+      @if (1 > 2) {
+        <button mat-fab>
+          <mat-icon>favorite</mat-icon>
+          {{post.likes.length}}
+        </button>
+      } @else {
+        <button mat-fab>
+          <mat-icon>favorite_outline</mat-icon>
+          {{post.likes.length}}
+        </button>
+      }
       <!-- <div>{{countLikes(post.likes)}}</div> -->
     </div>
   </div>
