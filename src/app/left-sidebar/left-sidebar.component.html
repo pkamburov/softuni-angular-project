@@ -1,6 +1,6 @@
 <div class="left-sidebar">
     <div class="left-navbar">
-        @if (2 > 5) {
+        @if (isLoggedIn) {
             <a href="#" class="avatar">
                 <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.m.wikipedia.org%2Fwiki%2FFile%3ASample_User_Icon.png&psig=AOvVaw1caMqSgZbqWBMHqpXW_C-W&ust=1733071455406000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCJC2gbXAhIoDFQAAAAAdAAAAABAE">
             </a>
@@ -22,11 +22,12 @@
             </button>
         } @else {
             <div class="guest">
-                <button mat-button routerLink="/login">
+                <!-- <button mat-button routerLink="/login"> -->
+                <button mat-button (click)="openLogInDialog()">    
                     <mat-icon>login</mat-icon>
                     <span>Log In</span>
                 </button>
-                <button mat-button routerLink="/login">
+                <button mat-button (click)="openRegisterDialog()">
                     <mat-icon>person</mat-icon>
                     <span>Register</span>
                 </button>

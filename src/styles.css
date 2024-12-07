@@ -41,7 +41,7 @@ body {
     z-index: 5 !important;
     background: #161e27;
     border-left: 1px solid rgb(114, 119, 141);
-    border-right: 1px solid rgb(114, 119, 141);
+    /* border-right: 1px solid rgb(114, 119, 141); */
 }
 
 .mat-mdc-tab .mdc-tab__text-label {

@@ -1,0 +1,11 @@
+.full-width {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  .password-mismatch-error {
+    color: #f44336; /* Matches Angular Material error color */
+    font-size: 0.75rem; /* Matches Angular Material error text size */
+    margin-top: -28px; /* Aligns the message neatly below the field */
+    padding-left: 16px; /* Matches Material padding */
+  }

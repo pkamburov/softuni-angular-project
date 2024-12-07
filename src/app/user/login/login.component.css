@@ -1,0 +1,11 @@
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    padding: 16px;
+  }
+  
+  .full-width {
+    width: 100%;
+    margin-bottom: 16px;
+  }

@@ -1,1 +1,103 @@
-<p>register works!</p>
+<h2 mat-dialog-title>Register</h2>
+<mat-dialog-content>
+  <form [formGroup]="registerForm">
+  <!-- <form [formGroup]="registerForm" (ngSubmit)="onSubmit()"> -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Username</mat-label>
+      <input
+        matInput
+        formControlName="username"
+        type="text"
+        placeholder="Enter your username"
+      />
+      <mat-error *ngIf="registerForm.get('username')?.hasError('required')">
+        Username is required
+      </mat-error>
+      <mat-error *ngIf="registerForm.get('username')?.hasError('minlength')">
+        Username must be at least 6 characters long
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Display Name</mat-label>
+      <input
+        matInput
+        formControlName="displayName"
+        type="text"
+        placeholder="Enter your display name"
+      />
+      <mat-error *ngIf="registerForm.get('displayName')?.hasError('required')">
+        Display Name is required
+      </mat-error>
+      <mat-error *ngIf="registerForm.get('displayName')?.hasError('minlength')">
+        Display Name must be at least 3 characters long
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        formControlName="email"
+        type="email"
+        placeholder="Enter your email"
+      />
+      <mat-error *ngIf="registerForm.get('email')?.hasError('required')">
+        Email is required
+      </mat-error>
+      <mat-error *ngIf="registerForm.get('email')?.hasError('email')">
+        Invalid email address
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        formControlName="password"
+        type="password"
+        placeholder="Enter your password"
+      />
+      <mat-error *ngIf="registerForm.get('password')?.hasError('required')">
+        Password is required
+      </mat-error>
+      <mat-error *ngIf="registerForm.get('password')?.hasError('minlength')">
+        Password must be at least 4 characters
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Re-enter Password</mat-label>
+      <input
+        matInput
+        formControlName="rePassword"
+        type="password"
+        placeholder="Re-enter your password"
+      />
+      <mat-error *ngIf="registerForm.get('rePassword')?.hasError('required')">
+        Re-entering the password is required
+      </mat-error>
+      <mat-error *ngIf="registerForm.hasError('passwordMismatch')">
+        Passwords do not match
+      </mat-error>
+    </mat-form-field>
+
+    <div mat-dialog-actions>
+      <button
+        mat-button
+        mat-dialog-close
+        [style]="{ backgroundColor: '#234465', padding: '5px 20px' }"
+      >
+        Cancel
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="registerForm.invalid"
+        [style]="{ backgroundColor: registerForm.invalid ? 'gray' : '#234465' }"
+      >
+        Register
+      </button>
+    </div>
+  </form>
+</mat-dialog-content>
