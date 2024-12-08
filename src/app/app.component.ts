@@ -5,6 +5,7 @@ import { FooterComponent } from './core/footer/footer.component';
 import { LeftSidebarComponent } from './left-sidebar/left-sidebar.component';
 import { RightSidebarComponent } from './right-sidebar/right-sidebar.component';
 import { HttpClient } from '@angular/common/http';
+import { AuthenticateComponent } from './authenticate/authenticate.component';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ import { HttpClient } from '@angular/common/http';
     FooterComponent,
     LeftSidebarComponent,
     RightSidebarComponent,
+    AuthenticateComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

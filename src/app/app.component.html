@@ -1,10 +1,12 @@
-<div class="content-wrapper">
-  <app-left-sidebar />
-  <div class="main-container">
-    <app-header />
-    <!-- <app-main /> -->
-    <router-outlet />
-    <app-footer />
+<app-authenticate>
+  <div class="content-wrapper">
+    <app-left-sidebar />
+    <div class="main-container">
+      <app-header />
+      <!-- <app-main /> -->
+      <router-outlet />
+      <app-footer />
+    </div>
+    <app-right-sidebar />
   </div>
-  <app-right-sidebar />
-</div>
+</app-authenticate>
