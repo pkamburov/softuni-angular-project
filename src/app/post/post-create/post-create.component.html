@@ -1,1 +1,11 @@
-<p>post-create works!</p>
+<div mat-dialog-content>
+  <h2 mat-dialog-title>Write a Post</h2>
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Your Post</mat-label>
+    <textarea matInput placeholder="What's on your mind?" rows="5"></textarea>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Discard post</button>
+  <button mat-raised-button color="primary" (click)="onPost()">Post</button>
+</div>

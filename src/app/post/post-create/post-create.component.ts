@@ -1,23 +1,31 @@
 import { Component } from '@angular/core';
-import { FirebasePostService } from '../../services/firebase-post.service';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-post-create',
-  imports: [],
+  imports: [
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+  ],
   templateUrl: './post-create.component.html',
-  styleUrl: './post-create.component.css'
+  styleUrl: './post-create.component.css',
 })
 export class PostCreateComponent {
-  newPost = { authorId: '', content: '',};
+  newPost = { authorId: '', content: '' };
 
-  constructor(private postService: FirebasePostService){}
+  // constructor(private postService: FirebasePostService) {}
 
-  onSubmit() {
-    const postId = Date.now().toString();
-    this.postService.createPost(postId, this.newPost.authorId, this.newPost.content)
-      .subscribe(() => {
-        alert('Post submitted successfully!');
-        this.newPost = { authorId: '', content: '' }
-      });
+  onDiscard() {
+
   }
+
+  onPost() {
+
+  }
+
 }

@@ -7,6 +7,7 @@ import { Router, RouterLink } from '@angular/router';
 import { LoginComponent } from '../user/login/login.component';
 import { RegisterComponent } from '../user/register/register.component';
 import { UserService } from '../user/user.service';
+import { PostCreateComponent } from '../post/post-create/post-create.component';
 
 @Component({
   selector: 'app-left-sidebar',
@@ -23,7 +24,16 @@ export class LeftSidebarComponent {
   get isLoggedIn():boolean {
     return this.userService.isLoggedIn;
   }
+
+  get profile() {
+    return this.userService.getProfile();
+  }
+  
   constructor(private userService: UserService, private router: Router, private dialog: MatDialog) {}
+
+  openPostDialog() {
+    this.dialog.open(PostCreateComponent);
+  }
 
   openLogInDialog() {
     this.dialog.open(LoginComponent);
