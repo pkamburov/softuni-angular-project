@@ -9,11 +9,13 @@ import { BehaviorSubject, Subscription, tap } from 'rxjs';
 export class UserService implements OnDestroy {
   private user$$ = new BehaviorSubject<UserForAuth | null>(null);
   private user$ = this.user$$.asObservable();
+
   USER_KEY = '[user]';
+
   user: UserForAuth | null = null;
 
   userSubscription: Subscription | null = null;
-
+  
   get isLoggedIn():boolean {
     return !!this.user;
   }
@@ -25,7 +27,8 @@ export class UserService implements OnDestroy {
   }
 
   login(email: string, password: string) {
-    return this.http.post<UserForAuth>('/api/login', { email, password }).pipe(
+    return this.http.post<UserForAuth>('/api/login', { email, password })
+    .pipe(
       tap((user) => {
         this.user$$.next(user);
       })

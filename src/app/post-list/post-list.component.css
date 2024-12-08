@@ -21,7 +21,7 @@
 }
 
 .profilePic {
-    width: 20%;
+    width: 14%;
     margin-top: 12px;
 }
 
@@ -36,17 +36,17 @@
 }
 
 .userEmail {
-    color: gray;
+    color: rgb(174, 187, 201);
 }
 
 .mat-mdc-button-ripple {
-    height: 26px !important;
+    height: 16px !important;
 }
 
 .mat-mdc-fab {
     height: 26px !important;
     background-color: transparent;
-    color: white;
+    color: rgb(120, 142, 165);
     gap: 6px;
     box-shadow: none;
 }
@@ -54,4 +54,29 @@
 .mat-mdc-fab:hover {
     box-shadow: none;
     background-color: rgb(30, 41, 54);
+}
+
+.material-icons {
+    font-size: 22px;
+}
+
+.mat-icon {
+    height: 22px;
+    width: 22px;
+}
+
+.createdAt {
+    color: rgb(174, 187, 201);
+}
+
+.username {
+    font-weight: 500;
+}
+
+.mat-mdc-tab .mdc-tab {
+    flex-grow: 0 !important;
+}
+
+.mat-mdc-dialog-surface .mat-mdc-dialog-surface {
+    background-color: rgb(22, 30, 39) !important;
 }

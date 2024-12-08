@@ -11,7 +11,7 @@
   <div class="post-card">
     <div class="post-header">
       <div class="username">{{ post.userId.username }}</div>
-      <div class="userEmail">{{ post.userId.username + '.social.bg' }}</div>
+      <div class="userEmail">{{ '@' + post.userId.username + '.social.bg' }}</div>
       <div class="createdAt">
         {{post.created_at | elapsedTime}}
       </div>
@@ -20,7 +20,10 @@
       <p>{{ post.text }}</p>
     </div>
     <div class="post-footer">
-      <div>Comments</div>
+      <button mat-fab>
+        <mat-icon>chat_bubble_outline_outlined</mat-icon>
+      </button>
+      <!-- {{post.comments.length}} -->
       @if (1 > 2) {
         <button mat-fab>
           <mat-icon>favorite</mat-icon>

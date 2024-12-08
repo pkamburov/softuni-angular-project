@@ -92,6 +92,18 @@ function getProfileInfo(req, res, next) {
         .catch(next);
 }
 
+// GET User Profile
+
+function getUserProfile(req, res, next) {
+    const {_id: userId} = req.params._userId;
+    // userModel.findOne({ _id: userId}, { password: 0, __v: 0})
+    userModel.findOne({ _id: userId})
+    .then(user => { res.status(200).json(user)})
+        .catch(next);
+}
+
+//
+
 function editProfileInfo(req, res, next) {
     const { _id: userId } = req.user;
     const { tel, username, email } = req.body;
@@ -107,4 +119,5 @@ module.exports = {
     logout,
     getProfileInfo,
     editProfileInfo,
+    getProfileInfo
 }

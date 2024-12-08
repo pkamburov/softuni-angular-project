@@ -18,8 +18,6 @@ import { MatButtonModule } from '@angular/material/button';
 export class PostCreateComponent {
   newPost = { authorId: '', content: '' };
 
-  // constructor(private postService: FirebasePostService) {}
-
   onDiscard() {
 
   }

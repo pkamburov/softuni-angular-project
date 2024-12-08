@@ -7,7 +7,12 @@ export const routes: Routes = [
     { path: '', component: MainComponent },
     { path: 'home', redirectTo: '', pathMatch: 'full' },
     
-    { path: 'profile', component: ProfileComponent },
+    // { path: 'profile', component: ProfileComponent },
+    { path: 'profile',
+        children: [
+            { path: ':userId', component: ProfileComponent}
+        ]
+    },
     { path: 'search', component: SearchComponent },
 
     {

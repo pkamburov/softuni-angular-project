@@ -81,6 +81,15 @@ function like(req, res, next) {
         .catch(next)
 }
 
+function comment(req, res, next) {
+    const { postId } = req.params;
+    const { _id: userId} = req.user;
+
+    console.log('Comment');
+
+    
+}
+
 module.exports = {
     getLatestsPosts,
     newPost,
