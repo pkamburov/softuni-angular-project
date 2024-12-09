@@ -16,24 +16,88 @@ import { UserService } from '../../user/user.service';
 export class PostListComponent implements OnInit {
   @ViewChild('postContainer') postContainer!: ElementRef;
   posts: Post[] = [];
+  userId: string | null = null;
   currentPage = 1;
   limit = 8;
   isLoading = true;
 
-  constructor(private apiService: ApiService) {
-
-  }
+  constructor(
+    private apiService: ApiService,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
-      this.loadPosts();
+    this.userService.getUserProfile().subscribe({
+      next: (user) => {
+        if (user) {
+          this.userId = user._id;
+        }
+      },
+    });
+    this.loadPosts();
+  }
+
+  like(postId: string): void {
+    const post = this.posts.find((p) => p._id === postId);
+    const userId = this.userService.getUserId();
+
+    if (!post || !userId) {
+      console.log('Post not found or user not logged in');
+      return;
+    }
+
+    if (!post.likes.includes(userId)) {
+      this.apiService.likePost(postId).subscribe({
+        next: () => {
+          post.likes.push(userId);
+          post.likedByUser = true;
+          console.log('Post liked');
+        },
+        error: (err) => console.log('Error liking post: ', err)
+      });
+    }
+  }
+
+  // loadPosts(): void {
+  //   this.apiService
+  //     .getPosts(this.currentPage, this.limit)
+  //     .subscribe((posts) => {
+  //       this.posts = [...this.posts, ...posts];
+  //       this.isLoading = false;
+  //     });
+  // }
+
+  removeLike(postId: string): void {
+    const post = this.posts.find((p) => p._id === postId);
+    const userId = this.userService.getUserId();
+
+    if (!post || !userId) {
+      console.log('Post not found or user not logged in');
+      return;
+    }
+
+    if (post.likes.includes(userId)) {
+      post.likes = post.likes.filter((id) => id !== userId);
+      post.likedByUser = false;
+      console.log('Like removed');
+    }
   }
 
   loadPosts(): void {
     this.apiService
       .getPosts(this.currentPage, this.limit)
       .subscribe((posts) => {
-        this.posts = [...this.posts, ...posts];
-        this.isLoading = false;
+        if (this.userId) {
+          this.posts = posts.map((post) => {
+            post.likedByUser = post.likes.includes(this.userId!);
+            return post;
+          });
+          this.isLoading = false;
+        } else {
+          this.posts = posts;
+          this.isLoading = false;
+
+        }
       });
   }
 

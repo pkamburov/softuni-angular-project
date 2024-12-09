@@ -34,13 +34,13 @@
           <mat-icon>chat_bubble_outline_outlined</mat-icon>
         </button>
         <!-- {{post.comments.length}} -->
-        @if (1 > 2) {
-        <button mat-fab>
+        @if (post.likedByUser) {
+        <button mat-fab (click)="removeLike(post._id)">
           <mat-icon>favorite</mat-icon>
           {{ post.likes.length }}
         </button>
         } @else {
-        <button mat-fab>
+        <button mat-fab mat-fab (click)="like(post._id)">
           <mat-icon>favorite_outline</mat-icon>
           {{ post.likes.length }}
         </button>
