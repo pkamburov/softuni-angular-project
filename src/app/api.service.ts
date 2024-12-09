@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Post } from './types/post';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +10,14 @@ import { Post } from './types/post';
 export class ApiService {
   constructor(private http: HttpClient) {}
 
-  getPosts(limit?: number) {
+  getPosts(page: number, limit: number): Observable<Post[]> {
     let url = `/api/posts`;
-    if(limit) {
-      url += `?limit=${limit}`
-    }
-    return this.http.get<Post[]>(url)
+    return this.http.get<Post[]>(`${url}?page=${page}&limit=${limit}`);
+  }
+
+  createPost(postText: any) {
+    const payload = postText;
+    console.log('This', payload);
+    return this.http.post<Post>(`/api/posts`, payload);
   }
 }
