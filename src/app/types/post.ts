@@ -8,5 +8,6 @@ export interface Post {
     comments: string[];
     created_at: string;
     updatedAt: string;
+    likedByUser: boolean;
     __v: number;
 }
