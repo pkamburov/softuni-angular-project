@@ -17,7 +17,12 @@ export class ApiService {
 
   createPost(postText: any) {
     const payload = postText;
-    console.log('This', payload);
     return this.http.post<Post>(`/api/posts`, payload);
+  }
+
+  likePost(postId: string): Observable<any> {
+    return this.http.put(`/api/likes/${postId}`, {
+      withCredentials: true,
+    });
   }
 }
