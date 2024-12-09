@@ -26,6 +26,10 @@ export class LeftSidebarComponent implements OnInit {
     return this.userService.isLoggedIn;
   }
 
+  get hasProfileImage(): boolean {
+    return !!this.profileImageUrl;
+  }
+
   constructor(
     private userService: UserService,
     private router: Router,
@@ -38,7 +42,7 @@ export class LeftSidebarComponent implements OnInit {
       if (user) {
         this.profileImageUrl = user.imageUrl
         ? `${user.imageUrl}?timestamp=${new Date().getTime()}`
-        : '/images/default-image.jpg';
+        : '/images/default-avatar.jpg';
       }
     })
   }

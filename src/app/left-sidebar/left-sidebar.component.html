@@ -1,39 +1,41 @@
 <div class="left-sidebar">
   <div class="left-navbar">
-    @if (isLoggedIn) {
-    <a href="#" class="avatar">
-      <img [src]="profileImageUrl" class="profilePic"
-
-        />
+    @if (isLoggedIn) { @if (hasProfileImage) {
+    <a routerLink="/profile" class="avatar">
+      <img [src]="profileImageUrl" class="profilePic" />
     </a>
+    } @else {
+    <a routerLink="/profile" class="avatar">
+      <img src="images/default-avatar.jpg" class="profilePic" />
+    </a>
+    }
     <div class="navigation">
-        <button mat-button routerLink="/home">
-          <mat-icon>home</mat-icon>
-          <span>Home</span>
-        </button>
-    
-        <button mat-button routerLink="/search">
-          <mat-icon>search</mat-icon>
-          <span>Search</span>
-        </button>
-    
-        <button mat-button routerLink="/profile">
-          <mat-icon>person</mat-icon>
-          <span>Profile</span>
-        </button>
-    
-        <button mat-button (click)="openPostDialog()">
-          <mat-icon>add_circle</mat-icon>
-          <span>New Post</span>
-        </button>
+      <button mat-button routerLink="/home">
+        <mat-icon>home</mat-icon>
+        <span>Home</span>
+      </button>
 
+      <button mat-button routerLink="/search">
+        <mat-icon>search</mat-icon>
+        <span>Search</span>
+      </button>
+
+      <button mat-button routerLink="/profile">
+        <mat-icon>person</mat-icon>
+        <span>Profile</span>
+      </button>
+
+      <button mat-button (click)="openPostDialog()">
+        <mat-icon>add_circle</mat-icon>
+        <span>New Post</span>
+      </button>
     </div>
-    
+
     <div class="logout-btn">
-        <button id="logout" mat-button (click)="onLogout()">
-          <mat-icon>logout</mat-icon>
-          <span>Logout</span>
-        </button>
+      <button id="logout" mat-button (click)="onLogout()">
+        <mat-icon>logout</mat-icon>
+        <span>Logout</span>
+      </button>
     </div>
 
     } @else {
