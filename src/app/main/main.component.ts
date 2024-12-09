@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
-import { PostListComponent } from "../post-list/post-list.component";
+import { PostListComponent } from "../post/post-list/post-list.component";
 import { UserService } from '../user/user.service';
 
 @Component({
