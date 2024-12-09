@@ -88,16 +88,15 @@ export class PostListComponent implements OnInit {
       .getPosts(this.currentPage, this.limit)
       .subscribe((posts) => {
         if (this.userId) {
-          this.posts = posts.map((post) => {
+          const updatedPosts = posts.map((post) => {
             post.likedByUser = post.likes.includes(this.userId!);
             return post;
           });
-          this.isLoading = false;
+          this.posts = [...this.posts, ...updatedPosts]
         } else {
-          this.posts = posts;
-          this.isLoading = false;
-
+          this.posts = [...this.posts, ...posts];
         }
+        this.isLoading = false;
       });
   }
 
