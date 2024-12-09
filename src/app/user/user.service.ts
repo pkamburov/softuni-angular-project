@@ -83,6 +83,15 @@ export class UserService implements OnDestroy {
     );
   }
 
+  getUserProfile() {
+    return this.user$$.asObservable();
+  }
+
+  getUserId(): string | null {
+    const user = this.user;
+    return user?._id || null;
+  }
+  
 
   updateProfile(username: string, email: string, tel?: string) {
     return this.http
