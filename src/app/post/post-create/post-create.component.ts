@@ -49,7 +49,7 @@ export class PostCreateComponent {
       this.apiService.createPost(this.postForm.value)
       .subscribe(() => {
         this.dialogRef.close();
-        this.router.navigate(['/']);
+        this.router.navigate(['/home']);
       })
     }
   }

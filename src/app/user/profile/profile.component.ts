@@ -15,7 +15,6 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.params['userId'];
-
     
   }
 }
