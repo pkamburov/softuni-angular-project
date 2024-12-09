@@ -6,7 +6,7 @@ import { LoaderComponent } from '../shared/loader/loader.component';
   selector: 'app-authenticate',
   imports: [LoaderComponent],
   templateUrl: './authenticate.component.html',
-  styleUrl: './authenticate.component.css'
+  styleUrl: './authenticate.component.css',
 })
 export class AuthenticateComponent implements OnInit {
   isAuthenticating = true;
@@ -23,7 +23,7 @@ export class AuthenticateComponent implements OnInit {
       },
       complete: () => {
         this.isAuthenticating = false;
-      }
-    })
+      },
+    });
   }
 }

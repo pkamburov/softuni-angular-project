@@ -1,12 +1,16 @@
 <main>
   <mat-tab-group>
     @if (isLoggedIn) {
-    <mat-tab label="Discover">
-      <app-post-list />
-    </mat-tab>
-    <mat-tab label="Following"> Content 2 </mat-tab>
     <mat-tab label="Recent Posts">
-      <div>Content 3</div>
+      <div>
+        <app-post-list />
+      </div>
+    </mat-tab>
+    <mat-tab label="Following">     
+      Content 2      
+    </mat-tab>
+    <mat-tab label="Discover">
+      Content 3
     </mat-tab>
     } @else {
     <mat-tab label="Discover">

@@ -5,6 +5,7 @@ export interface User {
     email: string;
     username: string;
     password: string;
+    imageUrl: string;
     created_at: string;
     updatedAt: string;
     __v: number;
@@ -15,9 +16,11 @@ export interface UserForAuth {
     email: string;
     password: string;
     id: string;
+    imageUrl: string;
 }
 
 export interface UserProfile {
     username: string;
     email: string;
+    profilePic: string;
 }

@@ -1,5 +1,5 @@
 .left-sidebar {
-    width: 200px;
+    width: 250px;
     display: block;
     border-right: 1px solid rgb(114, 119, 141);
     height: 100%;
@@ -11,7 +11,7 @@
 .left-navbar {
     display: grid;
     gap: 8px;
-    
+    margin-top: 10px;
 }
 
 .left-navbar a {
@@ -39,7 +39,7 @@
 }
 
 .mdc-button {
-    min-width: 200px !important;
+    min-width: 240px !important;
 }
 
 .mat-mdc-button>.mat-icon {
@@ -52,6 +52,21 @@
     margin-top: 60px;
 }
 
-#logout {
-    margin-top: 60px;
+.navigation {
+    border-top: 1px solid rgb(114, 119, 141);
+    padding: 20px 0px;
+    border-bottom: 1px solid rgb(114, 119, 141);
+}
+
+
+.logout-btn {
+    margin-top: 10px;
+}
+
+.profilePic {
+    height: 56px;
+    width: 56px;
+    border-radius: 120px;
+    border: 1px solid darkslategray;
+    margin-top: 10px;
 }

@@ -44,7 +44,6 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      console.log('Login Data:', this.loginForm.value);
       const { email, password } = this.loginForm.value;
       this.userService.login(email, password).subscribe(() => {
         this.dialogRef.close();

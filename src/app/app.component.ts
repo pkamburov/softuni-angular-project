@@ -6,6 +6,7 @@ import { LeftSidebarComponent } from './left-sidebar/left-sidebar.component';
 import { RightSidebarComponent } from './right-sidebar/right-sidebar.component';
 import { HttpClient } from '@angular/common/http';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
+import { UserService } from './user/user.service';
 
 @Component({
   selector: 'app-root',
@@ -23,9 +24,9 @@ import { AuthenticateComponent } from './authenticate/authenticate.component';
 export class AppComponent {
   title = 'softuni-angular-project';
   
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private userService: UserService) {}
 
   ngOnInit() {
-
+    
   }
 }
