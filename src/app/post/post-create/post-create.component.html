@@ -1,11 +1,33 @@
+<h2 mat-dialog-title>Write a Post</h2>
 <div mat-dialog-content>
-  <h2 mat-dialog-title>Write a Post</h2>
-  <mat-form-field appearance="fill" class="full-width">
-    <mat-label>Your Post</mat-label>
-    <textarea matInput placeholder="What's on your mind?" rows="5"></textarea>
-  </mat-form-field>
-</div>
-<div mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Discard post</button>
-  <button mat-raised-button color="primary" (click)="onPost()">Post</button>
+  <form [formGroup]="postForm">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Your Post</mat-label>
+      <textarea
+        matInput
+        formControlName="text"
+        placeholder="What's on your mind?"
+        rows="5"
+      ></textarea>
+      <mat-error *ngIf="postForm.get('text')?.hasError('required')">
+        Post must not be empty
+      </mat-error>
+      <mat-error *ngIf="postForm.get('text')?.hasError('maxlength')">
+        Post must not be over 300 characters
+      </mat-error>
+    </mat-form-field>
+
+    <div mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Discard post</button>
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="postForm.invalid"
+        (click)="onPost()"
+      >
+        Post
+      </button>
+    </div>
+  </form>
 </div>
