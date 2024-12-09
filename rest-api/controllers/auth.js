@@ -94,13 +94,13 @@ function getProfileInfo(req, res, next) {
 
 // GET User Profile
 
-function getUserProfile(req, res, next) {
-    const {_id: userId} = req.params._userId;
-    // userModel.findOne({ _id: userId}, { password: 0, __v: 0})
-    userModel.findOne({ _id: userId})
-    .then(user => { res.status(200).json(user)})
-        .catch(next);
-}
+// function getUserProfile(req, res, next) {
+//     const {_id: userId} = req.params._userId;
+//     // userModel.findOne({ _id: userId}, { password: 0, __v: 0})
+//     userModel.findOne({ _id: userId})
+//     .then(user => { res.status(200).json(user)})
+//         .catch(next);
+// }
 
 //
 

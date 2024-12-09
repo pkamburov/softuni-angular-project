@@ -7,4 +7,10 @@ const { postController } = require('../controllers');
 
 router.get('/', postController.getLatestsPosts);
 
+//
+router.post('/', auth(), postController.createPost);
+router.put('/posts/:postId', auth(), postController.editPost);
+router.delete('/posts/:postId', auth(), postController.deletePost);
+//
+
 module.exports = router

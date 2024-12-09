@@ -37,10 +37,6 @@ const postSchema = new mongoose.Schema({
         type: ObjectId,
         ref: "User"
     },
-    themeId: {
-        type: ObjectId,
-        ref: "Theme"
-    },
 }, { timestamps: { createdAt: 'created_at' } });
 
 module.exports = mongoose.model('Post', postSchema);

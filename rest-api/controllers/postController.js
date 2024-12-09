@@ -1,20 +1,34 @@
 const { userModel, themeModel, postModel } = require('../models');
 
-function newPost(text, userId, themeId) {
-    return postModel.create({ text, userId, themeId })
+function newPost(text, userId) {
+    return postModel.create({ text: text.text, userId})
         .then(post => {
             return Promise.all([
-                userModel.updateOne({ _id: userId }, { $push: { posts: post._id }, $addToSet: { themes: themeId } }),
-                themeModel.findByIdAndUpdate({ _id: themeId }, { $push: { posts: post._id }, $addToSet: { subscribers: userId } }, { new: true })
+                userModel.updateOne({ _id: userId}, { $push: {posts : post._id } })
             ])
-        })
+        });
 }
 
+// function getLatestsPosts(req, res, next) {
+//     const limit = Number(req.query.limit) || 0;
+
+//     postModel.find()
+//         .sort({ created_at: -1 })
+//         .limit(limit)
+//         .populate('themeId userId')
+//         .then(posts => {
+//             res.status(200).json(posts)
+//         })
+//         .catch(next);
+// }
+
 function getLatestsPosts(req, res, next) {
-    const limit = Number(req.query.limit) || 0;
+    const page = Number(req.query.page) || 1;
+    const limit = Number(req.query.limit) || 10;
 
     postModel.find()
         .sort({ created_at: -1 })
+        .skip((page - 1) * limit)
         .limit(limit)
         .populate('themeId userId')
         .then(posts => {
@@ -24,13 +38,12 @@ function getLatestsPosts(req, res, next) {
 }
 
 function createPost(req, res, next) {
-    const { themeId } = req.params;
     const { _id: userId } = req.user;
-    const { postText } = req.body;
-
-    newPost(postText, userId, themeId)
-        .then(([_, updatedTheme]) => res.status(200).json(updatedTheme))
+    const postText = req.body;
+    newPost(postText, userId)
+        .then(([_, updatedPost]) => res.status(200).json(updatedPost))
         .catch(next);
+
 }
 
 function editPost(req, res, next) {
@@ -81,14 +94,16 @@ function like(req, res, next) {
         .catch(next)
 }
 
-function comment(req, res, next) {
-    const { postId } = req.params;
-    const { _id: userId} = req.user;
+//
+// function comment(req, res, next) {
+//     const { postId } = req.params;
+//     const { _id: userId} = req.user;
 
-    console.log('Comment');
-
+//     console.log('Comment');
     
-}
+// }
+//
+
 
 module.exports = {
     getLatestsPosts,

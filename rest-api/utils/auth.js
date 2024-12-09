@@ -34,6 +34,7 @@ function auth(redirectUnauthenticated = true) {
                     res
                         .status(401)
                         .send({ message: "Invalid token!" });
+                    next();
                     return;
                 }
                 next(err);
