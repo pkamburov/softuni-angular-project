@@ -1,0 +1,59 @@
+@if (isLoading) {
+<app-loader />
+} @else {
+<div #postContainer>
+  @for (post of posts; track $index) {
+  <div class="post-container">
+    <div class="profilePic">
+      @if (post.userId.imageUrl) {
+        <img
+          src={{post.userId.imageUrl}} alt="Profile Picture"
+        />
+      } @else {
+        <img
+        src="images/default-avatar.jpg" 
+      />
+      }
+      <div></div>
+    </div>
+    <div class="post-card">
+      <div class="post-header">
+        <div class="username">{{ post.userId.username }}</div>
+        <div class="userEmail">
+          {{ "@" + post.userId.username + ".social.bg" }}
+        </div>
+        <div class="createdAt">
+          {{ post.created_at | elapsedTime }}
+        </div>
+      </div>
+      <div class="post-content">
+        <p>{{ post.text }}</p>
+      </div>
+      <div class="post-footer">
+        <button mat-fab>
+          <mat-icon>chat_bubble_outline_outlined</mat-icon>
+        </button>
+        <!-- {{post.comments.length}} -->
+        @if (1 > 2) {
+        <button mat-fab>
+          <mat-icon>favorite</mat-icon>
+          {{ post.likes.length }}
+        </button>
+        } @else {
+        <button mat-fab>
+          <mat-icon>favorite_outline</mat-icon>
+          {{ post.likes.length }}
+        </button>
+        }
+        <!-- <div>{{countLikes(post.likes)}}</div> -->
+      </div>
+    </div>
+  </div>
+  }
+</div>
+}
+<div>
+  <button (click)="loadMorePosts()" class="load-more">
+    <span>Load More</span>
+  </button>
+</div>
