@@ -61,4 +61,25 @@ export class RegisterComponent {
       ? { passwordMismatch: true }
       : null;
   }
+
+  register() {
+    if (this.registerForm.invalid) {
+      console.log('Invalid Form');
+      return;
+    }
+
+    const {
+      username,
+      email,
+      password,
+      rePassword
+    } = this.registerForm.value;
+
+    this.userService
+      .register(username!, email!, password!, rePassword!)
+      .subscribe(() => {
+        this.dialogRef.close();
+        this.router.navigate(['/']);
+      });
+  }
 }

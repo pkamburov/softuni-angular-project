@@ -1,6 +1,6 @@
 <h2 mat-dialog-title>Register</h2>
 <mat-dialog-content>
-  <form [formGroup]="registerForm">
+  <form [formGroup]="registerForm" (ngSubmit)="register()">
   <!-- <form [formGroup]="registerForm" (ngSubmit)="onSubmit()"> -->
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Username</mat-label>
@@ -95,7 +95,7 @@
         type="submit"
         [disabled]="registerForm.invalid"
         [style]="{ backgroundColor: registerForm.invalid ? 'gray' : '#234465' }"
-      >
+        >
         Register
       </button>
     </div>
