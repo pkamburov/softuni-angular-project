@@ -25,4 +25,10 @@ export class ApiService {
       withCredentials: true,
     });
   }
+
+  deletePost(postId: string): Observable<any> {
+    return this.http.delete<Post>(`/api/posts/${postId}`, {
+      withCredentials: true, 
+    });
+  }
 }
