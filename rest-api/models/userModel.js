@@ -67,13 +67,35 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-        minlength: [5, 'Password should be at least 5 characters'],
+        minlength: [4, 'Password should be at least 4 characters'],
         validate: {
             validator: function (v) {
                 return /[a-zA-Z0-9]+/g.test(v);
             },
             message: props => `${props.value} must contains only latin letters and digits!`
         },
+    },
+    displayName: {
+        type: String,
+        required: false,
+        minlength: [4, 'Display name should be at least 4 characters'],
+        validate: {
+            validator: function (v) {
+                return /[a-zA-Z0-9]+/g.test(v);
+            },
+            message: props => `${props.value} must contains only latin letters and digits!`
+        }
+    },
+    description: {
+        type: String,
+        required: false,
+        minlength: [4, 'Display name should be at least 4 characters'],
+        validate: {
+            validator: function (v) {
+                return /[a-zA-Z0-9]+/g.test(v);
+            },
+            message: props => `${props.value} must contains only latin letters and digits!`
+        }
     },
     posts: [{
         type: ObjectId,
