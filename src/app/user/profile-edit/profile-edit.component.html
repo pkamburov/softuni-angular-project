@@ -1,0 +1,81 @@
+<div mat-dialog-content>
+    <h2>Edit profile</h2>
+  <form [formGroup]="editForm" (ngSubmit)="onEdit()">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Username</mat-label>
+      <input
+        matInput
+        formControlName="username"
+        type="text"
+        placeholder="Your username"
+      />
+      <mat-error *ngIf="editForm.get('username')?.hasError('required')">
+        Username is required
+      </mat-error>
+      <mat-error *ngIf="editForm.get('username')?.hasError('minlength')">
+        Username must be at least 6 characters long
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        formControlName="email"
+        type="email"
+        placeholder="Enter your email"
+      />
+      <mat-error *ngIf="editForm.get('email')?.hasError('required')">
+        Email is required
+      </mat-error>
+      <mat-error *ngIf="editForm.get('email')?.hasError('email')">
+        Invalid email address
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Display Name</mat-label>
+      <input
+        matInput
+        formControlName="displayName"
+        type="text"
+        placeholder="Your display name"
+      />
+      <mat-error *ngIf="editForm.get('displayName')?.hasError('minlength')">
+        Display Name must be at least 4 characters long
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Description</mat-label>
+        <input
+          matInput
+          formControlName="description"
+          type="text"
+          placeholder="More about you"
+        />
+        <mat-error *ngIf="editForm.get('description')?.hasError('minlength')">
+          Description must be at least 4 characters long
+        </mat-error>
+      </mat-form-field>
+
+      <div mat-dialog-actions>
+        <button
+          mat-button
+          mat-dialog-close
+          [style]="{ backgroundColor: '#234465', padding: '5px 20px' }"
+        >
+          Cancel
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="editForm.invalid"
+          [style]="{ backgroundColor: editForm.invalid ? 'gray' : '#234465' }"
+          >
+          Submit
+        </button>
+      </div>
+  </form>
+</div>

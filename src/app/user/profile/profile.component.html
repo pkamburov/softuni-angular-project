@@ -1,5 +1,5 @@
 <div class="header-ontainer">
-  <div class="profile-header">Header</div>
+  <div class="profile-header"></div>
   <div class="profile-container">
     <div class="wrapper">
       <div class="profile-info">
@@ -15,13 +15,13 @@
         <div class="profile-name">{{ user?.username }}</div>
         <div class="display-name">{{ user?.email }}</div>
       </div>
-      <div class="post-counter"><span class="bold">{{userPosts}} </span>posts</div>
+      <div class="post-counter"><span class="bold">{{userPosts.length}} </span>posts</div>
       <div>
-        <div>Description...</div>
+        <div>{{user?.description}}</div>
       </div>
     </div>
     <div class="edit-profile">
-      <button mat-button class="edit-btn">
+      <button mat-button class="edit-btn" (click)="openEditDialog()">
         <span>Edit profile</span>
       </button>
     </div>
@@ -33,14 +33,32 @@
 <main>
   <mat-tab-group>
     <mat-tab label="Your Posts">
-      <app-post-single
-        *ngFor="let post of posts"
+      @if (this.userPosts.length === 0) {
+        <div class="no-content">No Posts Yet</div>
+      } @else {
+        <app-post-single
+          *ngFor="let post of userPosts"
+          [post]="post"
+          [userId]="userId"
+          (deletePostEvent)="onDeletePost($event)"
+        ></app-post-single>
+      }
+    </mat-tab>
+    <mat-tab label="Liked Posts">
+      @if (this.likedByUser.length === 0) {
+        <div class="no-content">
+            No Likes Yet
+        </div>
+      } @else {
+        <app-post-single
+        *ngFor="let post of likedByUser"
         [post]="post"
         [userId]="userId"
         (deletePostEvent)="onDeletePost($event)"
-      ></app-post-single>
+        >
+        </app-post-single>
+      }
     </mat-tab>
-    <mat-tab label="Liked Posts"> </mat-tab>
   </mat-tab-group>
 </main>
 }
