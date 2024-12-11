@@ -1,15 +1,18 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Post } from '../../types/post';
 import { ApiService } from '../../api.service';
 import { LoaderComponent } from '../../shared/loader/loader.component';
-import { ElapsedTimePipe } from '../../shared/elapsed-time.pipe';
 import { UserService } from '../../user/user.service';
+import { PostSingleComponent } from '../post-single/post-single.component';
+import { PostService } from '../post.service';
+
 
 @Component({
   selector: 'app-post-list',
-  imports: [LoaderComponent, ElapsedTimePipe, MatButtonModule, MatIconModule],
+  imports: [CommonModule, LoaderComponent, MatButtonModule, MatIconModule, PostSingleComponent],
   templateUrl: './post-list.component.html',
   styleUrl: './post-list.component.css',
 })
@@ -23,7 +26,8 @@ export class PostListComponent implements OnInit {
 
   constructor(
     private apiService: ApiService,
-    private userService: UserService
+    private userService: UserService,
+    public postService: PostService
   ) {}
 
   ngOnInit(): void {
@@ -35,52 +39,6 @@ export class PostListComponent implements OnInit {
       },
     });
     this.loadPosts();
-  }
-
-  like(postId: string): void {
-    const post = this.posts.find((p) => p._id === postId);
-    const userId = this.userService.getUserId();
-
-    if (!post || !userId) {
-      console.log('Post not found or user not logged in');
-      return;
-    }
-
-    if (!post.likes.includes(userId)) {
-      this.apiService.likePost(postId).subscribe({
-        next: () => {
-          post.likes.push(userId);
-          post.likedByUser = true;
-          console.log('Post liked');
-        },
-        error: (err) => console.log('Error liking post: ', err)
-      });
-    }
-  }
-
-  // loadPosts(): void {
-  //   this.apiService
-  //     .getPosts(this.currentPage, this.limit)
-  //     .subscribe((posts) => {
-  //       this.posts = [...this.posts, ...posts];
-  //       this.isLoading = false;
-  //     });
-  // }
-
-  removeLike(postId: string): void {
-    const post = this.posts.find((p) => p._id === postId);
-    const userId = this.userService.getUserId();
-
-    if (!post || !userId) {
-      console.log('Post not found or user not logged in');
-      return;
-    }
-
-    if (post.likes.includes(userId)) {
-      post.likes = post.likes.filter((id) => id !== userId);
-      post.likedByUser = false;
-      console.log('Like removed');
-    }
   }
 
   loadPosts(): void {
@@ -97,7 +55,8 @@ export class PostListComponent implements OnInit {
           this.posts = [...this.posts, ...posts];
         }
         this.isLoading = false;
-      });
+      }
+    );
   }
 
   loadMorePosts(): void {
@@ -110,5 +69,17 @@ export class PostListComponent implements OnInit {
         behavior: 'smooth',
       });
     }, 100);
+  }
+
+  onDeletePost(postId: string): void {
+    this.postService.deletePost(postId).subscribe({
+      next: () => {
+        this.posts = this.posts.filter(post => post._id !== postId);
+        console.log('deleted');
+      },
+      error: err => {
+        console.log('Error', err);
+      }
+    })
   }
 }

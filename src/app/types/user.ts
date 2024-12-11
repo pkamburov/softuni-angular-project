@@ -19,8 +19,8 @@ export interface UserForAuth {
     imageUrl: string;
 }
 
-export interface UserProfile {
-    username: string;
-    email: string;
-    profilePic: string;
-}
+// export interface UserProfile {
+//     username: string;
+//     email: string;
+//     profilePic: string;
+// }

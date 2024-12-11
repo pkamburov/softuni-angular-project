@@ -9,12 +9,12 @@ export const routes: Routes = [
     { path: 'home', redirectTo: '', pathMatch: 'full' },
     
     { path: 'login', redirectTo: '' },
-    // { path: 'profile', component: ProfileComponent },
-    { path: 'profile',
-        children: [
-            { path: ':userId', component: ProfileComponent}
-        ]
-    },
+    { path: 'profile', component: ProfileComponent },
+    // { path: 'profile',
+    //     children: [
+    //         { path: ':userId', component: ProfileComponent}
+    //     ]
+    // },
     { path: 'search', component: SearchComponent },
 
     {
