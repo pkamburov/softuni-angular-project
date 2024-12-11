@@ -3,3 +3,9 @@ header {
     align-items: center;
     justify-content: center;
 }
+
+img {
+    height: 72px;
+    width: 72px;
+    margin-top: 14px;
+}

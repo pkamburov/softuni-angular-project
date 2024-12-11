@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { LeftSidebarComponent } from './left-sidebar/left-sidebar.component';
 import { RightSidebarComponent } from './right-sidebar/right-sidebar.component';
@@ -12,7 +11,6 @@ import { UserService } from './user/user.service';
   selector: 'app-root',
   imports: [
     RouterOutlet,
-    HeaderComponent,
     FooterComponent,
     LeftSidebarComponent,
     RightSidebarComponent,
