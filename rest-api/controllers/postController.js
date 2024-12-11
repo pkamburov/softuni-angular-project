@@ -1,26 +1,14 @@
 const { userModel, themeModel, postModel } = require('../models');
 
-// function getPost(req, res, next) {
-//     const { postId } = req.params;
-
-//     postModel.findById(postId)
-//         .populate({
-//             path: 'comments',
-//             populate : {
-//                 path: 'userId'
-//             }
-//         })
-//         .then(post => res.json(post))
-//         .catch(next);
-// }
-
-
 function newPost(text, userId) {
     return postModel.create({ text: text.text, userId})
         .then(post => {
             return Promise.all([
                 userModel.updateOne({ _id: userId}, { $push: {posts : post._id } })
             ])
+                .then(() => {
+                    return postModel.findById(post._id).populate('userId')
+                })
         });
 }
 
@@ -49,12 +37,18 @@ function getLatestsPosts(req, res, next) {
 
 function createPost(req, res, next) {
     const { _id: userId } = req.user;
-    const postText = req.body;
+    const postText = req.body; 
+  
     newPost(postText, userId)
-        .then(([_, updatedPost]) => res.status(200).json(updatedPost))
-        .catch(next);
-
-}
+      .then(updatedPost => {
+        if (!updatedPost) {
+          console.error('Failed to retrieve the created post');
+          return res.status(500).json({ message: 'Failed to create post' });
+        }
+        res.status(200).json(updatedPost);
+      })
+      .catch(next);
+  }
 
 function editPost(req, res, next) {
     const { postId } = req.params;
@@ -97,22 +91,12 @@ function like(req, res, next) {
     const { postId } = req.params;
     const { _id: userId } = req.user;
 
-    console.log('like')
-
     postModel.updateOne({ _id: postId }, { $addToSet: { likes: userId } }, { new: true })
-        .then(() => res.status(200).json({ message: 'Liked successful!' }))
-        .catch(next)
-}
-
-//
-// function comment(req, res, next) {
-//     const { postId } = req.params;
-//     const { _id: userId} = req.user;
-
-//     console.log('Comment');
+    .then(() => res.status(200).json({ message: 'Liked successful!' }))
+    .catch(next)
     
-// }
-//
+    console.log('like')
+}
 
 
 module.exports = {

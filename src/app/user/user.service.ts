@@ -37,13 +37,13 @@ export class UserService implements OnDestroy {
   login(email: string, password: string) {
     return this.http.post<UserForAuth>('/api/login', { email, password }).pipe(
       tap((user) => {
-        this.setUser(user)
+        this.setUser(user);
         this.getProfile().subscribe({
           next: (profile) => {
             this.user$$.next(profile);
-          }
-        })
-        this.router.navigate(['/'])
+          },
+        });
+        this.router.navigate(['/']);
       })
     );
   }
@@ -78,9 +78,9 @@ export class UserService implements OnDestroy {
   }
 
   getProfile() {
-    return this.http.get<UserForAuth>('/api/users/profile').pipe(
-      tap(user => this.user$$.next(user))
-    );
+    return this.http
+      .get<UserForAuth>('/api/users/profile')
+      .pipe(tap((user) => this.user$$.next(user)));
   }
 
   getUserProfile() {
@@ -91,14 +91,19 @@ export class UserService implements OnDestroy {
     const user = this.user;
     return user?._id || null;
   }
-  
 
-  updateProfile(username: string, email: string, tel?: string) {
+  updateProfile(
+    username: string,
+    email: string,
+    displayName?: string,
+    description?: string
+  ) {
     return this.http
       .put<UserForAuth>(`/api/users/profile`, {
         username,
         email,
-        tel,
+        displayName,
+        description,
       })
       .pipe(tap((user) => this.user$$.next(user)));
   }

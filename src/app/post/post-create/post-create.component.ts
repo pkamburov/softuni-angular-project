@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -28,9 +28,14 @@ import { Post } from '../../types/post';
   templateUrl: './post-create.component.html',
   styleUrl: './post-create.component.css',
 })
-export class PostCreateComponent {
+export class PostCreateComponent implements OnInit{
   posts: Post[] = [];
   postForm: FormGroup;
+  userId: string | null = null;
+  currentPage = 1;
+  limit = 8;
+  isLoading = true;
+
   constructor(
     private apiService: ApiService,
     private fb: FormBuilder,
@@ -42,21 +47,36 @@ export class PostCreateComponent {
     });
   }
 
-  onPost() {
+  ngOnInit(): void {
+    this.apiService.getPosts(this.currentPage, this.limit).subscribe({
+      next: (posts) => {
+        this.posts = posts;
+      }
+    })
+  }
+
+  onPostCreate() {
     if (this.postForm.invalid) {
       return;
     } else {
       this.apiService.createPost(this.postForm.value)
       .subscribe(
         {
-        next: () => {
-          console.log('Created Post: ', this.postForm.value);
-          // this.postService.addPost(this.postForm.value);
-          this.posts.push(this.postForm.value)
+        next: (createdPost: Post) => {
+          if (!createdPost) {
+            return;
+          }
+          this.posts = [createdPost, ...this.posts];
+          this.postService.posts = this.posts;
+          this.postService.addPost(createdPost);
           this.dialogRef.close();
+        },
+        error: (err) => {
+          console.error('Error in createPost API call: ', err)
         }
       }
     )
     }
   }
+
 }

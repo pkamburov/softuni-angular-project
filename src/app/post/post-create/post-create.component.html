@@ -18,13 +18,20 @@
     </mat-form-field>
 
     <div mat-dialog-actions align="end">
-      <button mat-button mat-dialog-close>Discard post</button>
+      <button
+        mat-button
+        mat-dialog-close
+        [style]="{ backgroundColor: '#234465', padding: '5px 20px' }"
+      >
+        Discard post
+      </button>
       <button
         mat-raised-button
         color="primary"
         type="submit"
         [disabled]="postForm.invalid"
-        (click)="onPost()"
+        [style]="{ backgroundColor: postForm.invalid ? 'gray' : '#234465' }"
+        (click)="onPostCreate()"
       >
         Post
       </button>

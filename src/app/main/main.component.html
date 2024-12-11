@@ -7,15 +7,18 @@
         <app-post-list />
       </div>
     </mat-tab>
-    <mat-tab label="Following">     
-      Content 2      
-    </mat-tab>
-    <mat-tab label="Discover">
-      Content 3
+    <mat-tab label="Popular Posts">
+      <app-post-single
+      *ngFor="let post of popularPosts"
+      [userId]="userId"
+      [post]="post"
+    ></app-post-single>  
     </mat-tab>
     } @else {
-    <mat-tab label="Discover">
-      <app-post-list />
+    <mat-tab label="Recent Posts">
+      <div>
+        <app-post-list />
+      </div>
     </mat-tab>
     }
   </mat-tab-group>

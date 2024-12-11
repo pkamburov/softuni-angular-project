@@ -1,30 +1,52 @@
 <h2 mat-dialog-title>Login</h2>
 <mat-dialog-content>
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <mat-form-field appearance="fill" class="full-width">
-            <mat-label>Email</mat-label>
-            <input matInput formControlName="email" type="email" placeholder="Enter your email" />
-            <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
-                Email is required
-            </mat-error>
-            <mat-error *ngIf="loginForm.get('email')?.hasError('email')">
-                Invalid email address
-            </mat-error>
-        </mat-form-field>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        formControlName="email"
+        type="email"
+        placeholder="Enter your email"
+      />
+      <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+        Email is required
+      </mat-error>
+      <mat-error *ngIf="loginForm.get('email')?.hasError('email')">
+        Invalid email address
+      </mat-error>
+    </mat-form-field>
 
-        <mat-form-field appearance="fill" class="full-width">
-            <mat-label>Password</mat-label>
-            <input matInput formControlName="password" type="password" placeholder="Enter your password" />
-            <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
-                Password is required
-            </mat-error>
-        </mat-form-field>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        formControlName="password"
+        type="password"
+        placeholder="Enter your password"
+      />
+      <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+        Password is required
+      </mat-error>
+    </mat-form-field>
 
-        <div mat-dialog-actions>
-            <button mat-button mat-dialog-close>Cancel</button>
-            <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">
-                Login
-            </button>
-        </div>
-    </form>
+    <div mat-dialog-actions>
+      <button
+        mat-button
+        mat-dialog-close
+        [style]="{ backgroundColor: '#234465', padding: '5px 20px' }"
+      >
+        Cancel
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="loginForm.invalid"
+        [style]="{ backgroundColor: loginForm.invalid ? 'gray' : '#234465' }"
+      >
+        Login
+      </button>
+    </div>
+  </form>
 </mat-dialog-content>

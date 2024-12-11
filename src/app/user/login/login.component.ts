@@ -48,9 +48,10 @@ export class LoginComponent {
       this.userService.login(email, password).subscribe(() => {
         this.dialogRef.close();
         this.router.navigate(['/']);
-      })
+      });
     } else {
-      console.log('Invalid login');
+      alert('Invalid login');
+      this.dialogRef.close();
       return;
     }
   }

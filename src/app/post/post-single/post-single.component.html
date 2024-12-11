@@ -31,7 +31,7 @@
             <mat-icon>chat_bubble_outline_outlined</mat-icon>
           </button>
           <!-- {{post.comments.length}} -->
-          @if (post.likedByUser) {
+          @if (post.likedByUser && hasLiked) {
           <button mat-fab (click)="removeLike(post._id)">
             <mat-icon>favorite</mat-icon>
             {{ post.likes.length }}

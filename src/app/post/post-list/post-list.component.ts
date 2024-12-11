@@ -28,7 +28,8 @@ export class PostListComponent implements OnInit {
     private apiService: ApiService,
     private userService: UserService,
     public postService: PostService
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.userService.getUserProfile().subscribe({
@@ -36,9 +37,13 @@ export class PostListComponent implements OnInit {
         if (user) {
           this.userId = user._id;
         }
+        this.postService.posts$.subscribe((posts: Post[]) => {
+          this.posts = posts;
+        })
       },
-    });
+    })
     this.loadPosts();
+    this.isLoading = false;
   }
 
   loadPosts(): void {

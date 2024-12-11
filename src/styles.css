@@ -34,8 +34,24 @@ p {
     background-color: #1e2936 !important;
 }
 
+.mat-mdc-dialog-container .mat-mdc-dialog-title {
+  color: white !important;
+}
+
+
+.mdc-dialog--open .mat-mdc-dialog-surface, .mdc-dialog--closing .mat-mdc-dialog-surface {
+  background: #161e27;
+}
+
 .mat-mdc-tab-label-container {
     border-bottom: 1px solid rgb(114, 119, 141) !important;
+}
+.mat-mdc-form-field {
+  width: 100%;
+}
+
+.cdk-overlay-dark-backdrop {
+  background: rgba(0,0,0,.62);
 }
 
 .mat-mdc-tab-label-container {
@@ -64,4 +80,303 @@ p {
 
 .mat-mdc-tab-group.mat-mdc-tab-group-stretch-tabs>.mat-mdc-tab-header .mat-mdc-tab {
     width: 30%;
+}
+
+
+/*
+*/
+
+.profile-header {
+    overflow: hidden;
+    width: 100%;
+    height: 146px;
+  }
+  
+  .profile-container {
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: -80px;
+    justify-content: space-between;
+  }
+  
+  .profile-info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  
+  .profile-info img{
+    height: 66px;
+    width: 66px;
+    border-radius: 120px;
+    border: 1px solid darkslategray;
+  }
+  
+  .profile-name {
+    font-size: 26px;
+    font-weight: 500;
+    color: white;
+  }
+  
+  .display-name {
+    color: rgb(174, 187, 201);
+  }
+  
+  .edit-profile {
+    text-align: right;
+  }
+  .post-counter {
+    color: rgb(174, 187, 201)
+  }
+  
+  .bold {
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+  }
+  
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  
+  }
+  
+  .edit-btn {
+    background: rgb(30, 41, 54);
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    margin: 20px 10px;
+  }
+  
+  .no-content {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+
+/**
+  Test
+**/
+
+.post-card {
+  border-color: rgb(46, 64, 82);
+  padding: 12px;
+  border-top-width: 0px;
+  gap: 12px;
+  display: block;
+  width: 90%;
+}
+
+.post-header {
+  display: flex;
+  gap: 12px;
+}
+
+.post-content {
+  text-align: left;
+}
+
+.post-container {
+  display: flex;
+  border-bottom: 1px solid rgb(114, 119, 141);
+}
+
+.profilePic {
+  width: 10%;
+  margin-top: 12px;
+}
+
+.profilePic img{
+  height: 42px;
+  width: 42px;
+  border-radius: 120px;
+  margin-left: 10px;
+  border: 1px solid darkslategray;
+}
+
+.post-footer {
+  display: flex !important;
+  gap: 12px !important;
+}
+
+.userEmail {
+  color: rgb(174, 187, 201);
+}
+
+.mat-mdc-button-ripple {
+  height: 16px !important;
+}
+
+.mat-mdc-fab {
+  height: 26px !important;
+  background-color: transparent;
+  color: rgb(120, 142, 165);
+  gap: 6px;
+  box-shadow: none;
+}
+
+.mat-mdc-fab:hover {
+  box-shadow: none;
+  background-color: rgb(30, 41, 54);
+}
+
+.material-icons {
+  font-size: 22px;
+}
+
+.mat-icon {
+  height: 22px;
+  width: 22px;
+}
+
+.createdAt {
+  color: rgb(174, 187, 201);
+}
+
+.username {
+  font-weight: 500;
+}
+
+.mat-mdc-tab .mdc-tab {
+  flex-grow: 0 !important;
+  width: 30% !important;
+}
+
+.mat-mdc-dialog-surface .mat-mdc-dialog-surface {
+  background-color: rgb(22, 30, 39) !important;
+}
+
+.load-more {
+  position: fixed;
+  bottom: 60px; 
+  left: 50%; 
+  transform: translateX(-50%); 
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  z-index: 1000;
+}
+
+/*
+*/
+
+.post-card {
+  border-color: rgb(46, 64, 82);
+  padding: 12px;
+  border-top-width: 0px;
+  gap: 12px;
+  display: block;
+  width: 90%;
+}
+
+.post-header {
+  display: flex;
+  gap: 12px;
+}
+
+.post-content {
+  text-align: left;
+}
+
+.post-container {
+  display: flex;
+  border-bottom: 1px solid rgb(114, 119, 141);
+}
+
+.profilePic {
+  width: 10%;
+  margin-top: 12px;
+}
+
+.profilePic img{
+  height: 42px;
+  width: 42px;
+  border-radius: 120px;
+  margin-left: 10px;
+  border: 1px solid darkslategray;
+}
+
+.post-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.userEmail {
+  color: rgb(174, 187, 201);
+}
+
+.mat-mdc-button-ripple {
+  height: 16px !important;
+}
+
+.mat-mdc-fab {
+  height: 26px !important;
+  background-color: transparent;
+  color: rgb(120, 142, 165);
+  gap: 6px;
+  box-shadow: none;
+}
+
+.mat-mdc-fab:hover {
+  box-shadow: none;
+  background-color: rgb(30, 41, 54);
+}
+
+.material-icons {
+  font-size: 22px;
+}
+
+.mat-icon {
+  height: 22px;
+  width: 22px;
+}
+
+.createdAt {
+  color: rgb(174, 187, 201);
+  
+}
+
+.username {
+  font-weight: 500;
+}
+
+.mat-mdc-tab .mdc-tab {
+  flex-grow: 0 !important;
+}
+
+.mat-mdc-dialog-surface .mat-mdc-dialog-surface {
+  background-color: rgb(22, 30, 39) !important;
+}
+
+.mat-mdc-dialog-content h2 {
+  color: white;
+  font-size: 22px;
+  font-weight: 500;
+  margin-top: 20px !important;
+}
+
+.load-more {
+  position: fixed;
+  bottom: 20px;
+  left: 50%; 
+  transform: translateX(-50%); 
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  z-index: 1000;
 }

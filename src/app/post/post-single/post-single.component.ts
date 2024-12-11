@@ -12,6 +12,7 @@ import { Post } from '../../types/post';
   styleUrl: './post-single.component.css',
 })
 export class PostSingleComponent {
+  @Input() posts: Post[] = [];
   @Input() post!: Post;
   @Input() userId!: string | null;
   @Output() deletePostEvent = new EventEmitter<string>();
@@ -36,6 +37,10 @@ export class PostSingleComponent {
         error: (err) => console.log('Error liking post: ', err),
       });
     }
+  }
+
+  get hasLiked() {
+    return this.post.likedByUser;
   }
 
   removeLike(postId: string): void {
