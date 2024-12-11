@@ -1,8 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import {
+  MatDialogModule,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {
@@ -12,7 +16,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { UserService } from '../user.service';
-import { DialogRef } from '@angular/cdk/dialog';
 
 @Component({
   selector: 'app-profile-edit',
@@ -30,12 +33,17 @@ import { DialogRef } from '@angular/cdk/dialog';
 })
 export class ProfileEditComponent {
   editForm: FormGroup;
-  constructor(private fb: FormBuilder, private userService: UserService, private dialogRef: MatDialogRef<ProfileEditComponent>) {
+  constructor(
+    private fb: FormBuilder,
+    private userService: UserService,
+    private dialogRef: MatDialogRef<ProfileEditComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
     this.editForm = this.fb.group({
-      username: ['', [Validators.required, Validators.minLength(6)]],
-      displayName: ['', Validators.minLength(4)],
-      email: ['', [Validators.required, Validators.email]],
-      description: ['', Validators.minLength(4)],
+      username: [this.data.username, [Validators.required, Validators.minLength(6)]],
+      displayName: [this.data.displayName || '', Validators.minLength(4)],
+      email: [this.data.email, [Validators.required, Validators.email]],
+      description: [this.data.description || '', Validators.minLength(4)],
     });
   }
 
@@ -45,10 +53,8 @@ export class ProfileEditComponent {
       this.userService
         .updateProfile(username, email, displayName, description)
         .subscribe(
-          (response) => {
-          },
-          (error) => {
-          }
+          (response) => {},
+          (error) => {}
         );
       this.dialogRef.close();
     }

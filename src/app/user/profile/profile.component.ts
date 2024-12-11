@@ -113,7 +113,9 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  openEditDialog() {
-    this.dialog.open(ProfileEditComponent);
+  openEditDialog(user: UserForAuth) {
+    this.dialog.open(ProfileEditComponent, {
+      data: this.user,
+    });
   }
 }
