@@ -63,7 +63,6 @@ export class RegisterComponent {
 
   register() {
     if (this.registerForm.invalid) {
-      console.log('Invalid Form');
       return;
     }
 
