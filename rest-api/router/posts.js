@@ -6,11 +6,11 @@ const { postController } = require('../controllers');
 // middleware that is specific to this router
 
 router.get('/', postController.getLatestsPosts);
-
+// router.get('/posts/:postId', auth(), postController.getPost);
 //
 router.post('/', auth(), postController.createPost);
 router.put('/posts/:postId', auth(), postController.editPost);
-router.delete('/posts/:postId', auth(), postController.deletePost);
+router.delete('/:postId', auth(), postController.deletePost);
 //
 
 module.exports = router

@@ -1,5 +1,20 @@
 const { userModel, themeModel, postModel } = require('../models');
 
+// function getPost(req, res, next) {
+//     const { postId } = req.params;
+
+//     postModel.findById(postId)
+//         .populate({
+//             path: 'comments',
+//             populate : {
+//                 path: 'userId'
+//             }
+//         })
+//         .then(post => res.json(post))
+//         .catch(next);
+// }
+
+
 function newPost(text, userId) {
     return postModel.create({ text: text.text, userId})
         .then(post => {
@@ -9,18 +24,13 @@ function newPost(text, userId) {
         });
 }
 
-// function getLatestsPosts(req, res, next) {
-//     const limit = Number(req.query.limit) || 0;
+function getAllPosts(req, res, next) {
+    postModel.find()
+    .populate('userId')
+    .then(themes => res.json(themes))
+    .catch(next);
+}
 
-//     postModel.find()
-//         .sort({ created_at: -1 })
-//         .limit(limit)
-//         .populate('themeId userId')
-//         .then(posts => {
-//             res.status(200).json(posts)
-//         })
-//         .catch(next);
-// }
 
 function getLatestsPosts(req, res, next) {
     const page = Number(req.query.page) || 1;
@@ -65,13 +75,13 @@ function editPost(req, res, next) {
 }
 
 function deletePost(req, res, next) {
-    const { postId, themeId } = req.params;
+    const { postId } = req.params;
     const { _id: userId } = req.user;
 
     Promise.all([
         postModel.findOneAndDelete({ _id: postId, userId }),
         userModel.findOneAndUpdate({ _id: userId }, { $pull: { posts: postId } }),
-        themeModel.findOneAndUpdate({ _id: themeId }, { $pull: { posts: postId } }),
+        // themeModel.findOneAndUpdate({ _id: themeId }, { $pull: { posts: postId } }),
     ])
         .then(([deletedOne, _, __]) => {
             if (deletedOne) {
@@ -106,6 +116,8 @@ function like(req, res, next) {
 
 
 module.exports = {
+    // getPost,
+    getAllPosts,
     getLatestsPosts,
     newPost,
     createPost,
