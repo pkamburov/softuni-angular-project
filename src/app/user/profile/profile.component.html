@@ -1,1 +1,46 @@
-<p>profile works!</p>
+<div class="header-ontainer">
+  <div class="profile-header">Header</div>
+  <div class="profile-container">
+    <div class="wrapper">
+      <div class="profile-info">
+        @if (user?.imageUrl) {
+        <div>
+          <img class="profile-img" src="{{user?.imageUrl}}" />
+        </div>
+        } @else {
+        <div>
+          <img class="profile-img" src="/images/default-avatar.jpg" />
+        </div>
+        }
+        <div class="profile-name">{{ user?.username }}</div>
+        <div class="display-name">{{ user?.email }}</div>
+      </div>
+      <div class="post-counter"><span class="bold">{{userPosts}} </span>posts</div>
+      <div>
+        <div>Description...</div>
+      </div>
+    </div>
+    <div class="edit-profile">
+      <button mat-button class="edit-btn">
+        <span>Edit profile</span>
+      </button>
+    </div>
+  </div>
+</div>
+@if (isLoading) {
+<app-loader />
+} @else {
+<main>
+  <mat-tab-group>
+    <mat-tab label="Your Posts">
+      <app-post-single
+        *ngFor="let post of posts"
+        [post]="post"
+        [userId]="userId"
+        (deletePostEvent)="onDeletePost($event)"
+      ></app-post-single>
+    </mat-tab>
+    <mat-tab label="Liked Posts"> </mat-tab>
+  </mat-tab-group>
+</main>
+}
