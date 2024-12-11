@@ -1,0 +1,103 @@
+.post-card {
+    border-color: rgb(46, 64, 82);
+    padding: 12px;
+    border-top-width: 0px;
+    gap: 12px;
+    display: block;
+    width: 90%;
+}
+
+.post-header {
+    display: flex;
+    gap: 12px;
+}
+
+.post-content {
+    text-align: left;
+}
+
+.post-container {
+    display: flex;
+    border-bottom: 1px solid rgb(114, 119, 141);
+}
+
+.profilePic {
+    width: 10%;
+    margin-top: 12px;
+}
+
+.profilePic img{
+    height: 42px;
+    width: 42px;
+    border-radius: 120px;
+    margin-left: 10px;
+    border: 1px solid darkslategray;
+}
+
+.post-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.userEmail {
+    color: rgb(174, 187, 201);
+}
+
+.mat-mdc-button-ripple {
+    height: 16px !important;
+}
+
+.mat-mdc-fab {
+    height: 26px !important;
+    background-color: transparent;
+    color: rgb(120, 142, 165);
+    gap: 6px;
+    box-shadow: none;
+}
+
+.mat-mdc-fab:hover {
+    box-shadow: none;
+    background-color: rgb(30, 41, 54);
+}
+
+.material-icons {
+    font-size: 22px;
+}
+
+.mat-icon {
+    height: 22px;
+    width: 22px;
+}
+
+.createdAt {
+    color: rgb(174, 187, 201);
+    
+}
+
+.username {
+    font-weight: 500;
+}
+
+.mat-mdc-tab .mdc-tab {
+    flex-grow: 0 !important;
+}
+
+.mat-mdc-dialog-surface .mat-mdc-dialog-surface {
+    background-color: rgb(22, 30, 39) !important;
+}
+
+.load-more {
+    position: fixed;
+    bottom: 20px; /* Distance from the bottom of the screen */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust for exact centering */
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    z-index: 1000; /* Ensure it stays on top of other elements */
+  }
