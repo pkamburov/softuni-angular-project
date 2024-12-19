@@ -55,7 +55,7 @@ export class PostListComponent implements OnInit {
             post.likedByUser = post.likes.includes(this.userId!);
             return post;
           });
-          this.posts = [...this.posts, ...updatedPosts]
+          this.posts = [...this.posts, ...updatedPosts];
         } else {
           this.posts = [...this.posts, ...posts];
         }

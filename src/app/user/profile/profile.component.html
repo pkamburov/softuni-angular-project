@@ -20,11 +20,13 @@
         <div>{{user?.description}}</div>
       </div>
     </div>
-    <div class="edit-profile">
-      <button mat-button class="edit-btn" (click)="openEditDialog()">
-        <span>Edit profile</span>
-      </button>
-    </div>
+    @if (user) {
+      <div class="edit-profile">
+        <button mat-button class="edit-btn" (click)="openEditDialog(user)">
+          <span>Edit profile</span>
+        </button>
+      </div>
+    }
   </div>
 </div>
 @if (isLoading) {
